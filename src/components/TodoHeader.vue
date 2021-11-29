@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h1> Todo List </h1>
+        <h1> 투두 리스트 </h1>
     </header>
 </template>
 

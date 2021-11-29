@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <li v-for="(todoItem, index) in propsdata" class="shadow" v-bind:key="todoItem.item">
+            <li v-for="(todoItem, index) in propsdata" class="shadow" v-bind:key="todoItem.item">{{ todoItem.item }}
                 <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
                     <i class="fas fa-trash-alt"></i>
                 </span>
@@ -31,7 +31,7 @@ ul {
     text-align: left;
 }
 li {
-    display: flex;
+    display: flex; 
     min-height: 50px;
     height: 50px;
     line-height: 50px;

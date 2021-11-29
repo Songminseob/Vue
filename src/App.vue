@@ -21,9 +21,9 @@ export default {
   },
   methods: {
     addOneItem: function(todoItem) {
-      var obj = {completed: false, item: todoItem};
-      localStorage.setItem(todoItem, JSON.stringify(obj));
-      this.todoItems.push(obj);
+        var obj = {completed: false, item: todoItem};
+        localStorage.setItem(todoItem, JSON.stringify(obj)); //키 값인 todoItem을 바꿔줘야됨(중복문제)
+        this.todoItems.push(obj);
     },
     removeOneItem: function(todoItem, index) {
       this.todoItems.splice(index, 1);
