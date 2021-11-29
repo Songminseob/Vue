@@ -17,7 +17,7 @@ export default {
             this.$emit('removeItem', todoItem, index);
         },
         toggleComplete: function(todoItem){
-            this.$emit('toggleEvent', todoItem);
+            this.$emit('toggleItem', todoItem);
         }
     }
 }

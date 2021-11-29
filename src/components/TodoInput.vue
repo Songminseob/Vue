@@ -1,8 +1,8 @@
 <template>
     <div class="inputBox shadow"> 
-        <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
+        <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo" placeholder="오늘 할 일을 적으세요.">
         <span class="addContainer" v-on:click="addTodo">
-            <i class="far fa-plus-square addBtn" aria-hidden="true"></i>
+            <i class="fas fa-plus-square addBtn" aria-hidden="true"></i>
         </span>
     </div>
 </template>
@@ -16,6 +16,10 @@ export default {
     },    
     methods: {
         addTodo: function(){
+            if(this.newTodoItem == ""){
+                alert("할 일을 적으세요.");
+                return ;
+            }
             if(this.newTodoItem !== ""){
                 this.$emit('addTodoItem', this.newTodoItem);
                 this.clearInput();
@@ -28,7 +32,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped>f
 input:focus {
     outline: none;
 }
