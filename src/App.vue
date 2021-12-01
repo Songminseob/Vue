@@ -21,6 +21,8 @@ export default {
   },
   methods: {
     addOneItem: function(todoItem) { 
+        let obj = {completed: false, item: todoItem};
+
         for (let i=0; i< this.todoItems.length; i++) {
           if (this.todoItems[i].item === todoItem) {
             alert("이미 추가한 할 일입니다.");
@@ -30,8 +32,7 @@ export default {
             return ;
           }
         }
-        
-        let obj = {completed: false, item: todoItem};
+
         localStorage.setItem(todoItem, JSON.stringify(obj));
         this.todoItems.push(obj);
     },
