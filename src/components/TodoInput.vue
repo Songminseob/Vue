@@ -1,60 +1,58 @@
 <template>
-    <div class="inputBox shadow"> 
-        <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo" placeholder="오늘 할 일을 적으세요.">
-        <span class="addContainer" v-on:click="addTodo">
-            <i class="fas fa-plus-square addBtn" aria-hidden="true"></i>
-        </span>
+    <div>
+        <input type="text" v-model.trim="todo" placeholder="할 일을 입력하세요." class="todo-input" @keyup.enter="addTodo" maxlength="30">
+        <button type="button" class="add-todo-btn" @click="addTodo">+</button>
     </div>
 </template>
 
 <script>
+import Constant from '../constant'
+
 export default {
-    data: function(){
+    name: 'todo-input',
+    data() {
         return {
-            newTodoItem: ""
+            todo: ""
         }
     },    
     methods: {
         addTodo: function(){
-            if(this.newTodoItem == ""){
-                alert("할 일을 적으세요.");
-                return ;
-            }
-            if(this.newTodoItem !== ""){
-                this.$emit('addTodoItem', this.newTodoItem);
-                this.clearInput();
-            }
-        },
-        clearInput: function() {
-            this.newTodoItem=""; //비워주기(초기화)
+            this.$store.commit(Constant.Add_Todo, { todo: this.todo });
+            this.todo = "";
         }
     }
 }
 </script>
 
-<style scoped>f
-input:focus {
-    outline: none;
-}
-.inputBox {
-    background: white;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 5px;
-}
-.inputBox input {
-    border-style: none;
-    font-size: 0.9rem;
-}
-.addContainer {
-    float: right;
-    background: linear-gradient(to right, #62EAC6, #32CEE6);
-    display: block;
-    width: 3rem;
-    border-radius: 0 5px 5px 0;
-}
-.addBtn {
-    color: white;
-    vertical-align: middle;
-}
+<style scoped>
+    .todo-input {
+        display: block;
+        width: 100%;
+        height: 3rem;
+        border-radius: 5px;
+        margin: 0.8rem 0;
+        box-shadow: 5px 10px 10px rgba(0, 0, 0, .03);
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        padding-left: 1rem;
+    }
+
+    .todo-input:first-of-type{
+        margin-top: 2rem;
+    }
+
+    .add-todo-btn {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0 5px 5px 0;
+        background: linear-gradient(to right, #6478fb, #8763fb);
+        position: absolute;
+        right: 0;
+        margin-top: -3.8rem;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 800;
+        cursor: pointer;
+    }
 </style>
